@@ -1,5 +1,7 @@
 # Ghostline DEMO
 
+⚠️ Note: This is a demonstrational project. Some files and security-sensitive logic are intentionally excluded from the repository. Its purpose is to showcase my backend development skills, project structure approach, and real-world experience with VPN services.
+
 Ghostline is a commercial VPN management system built with [NestJS](https://nestjs.com), raw SQL via [pg](https://node-postgres.com/) and [PostgreSQL](https://www.postgresql.org). It exposes a Telegram bot for user interaction and integrates with [Xray](https://github.com/XTLS/Xray-core) (VLESS + Reality) to provide secure VPN connections.
 
 ---
@@ -168,3 +170,5 @@ Alternatively, you can use `docker-compose up` to run the application alongside 
 ## Conclusion
 
 Ghostline aims for simplicity and performance while remaining easy to support. Direct SQL via DAO gives developers complete control and visibility over database queries.
+
+⚠️ Note: This is a demonstrational project. Some files and security-sensitive logic are intentionally excluded from the repository. Its purpose is to showcase my backend development skills, project structure approach, and real-world experience with VPN services.

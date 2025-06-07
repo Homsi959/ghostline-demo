@@ -44,16 +44,16 @@ export class SshService implements OnModuleInit {
       const { stdout, stderr } = await this.execAsync(fullCommand);
 
       if (stderr) {
-        this.logger.warn(`stderr при выполнении команды: ${stderr}`, this);
+        this.logger.warn(`stderr during command execution: ${stderr}`, this);
       }
 
       return stdout.trim();
     } catch (error: any) {
       this.logger.error(
-        `Ошибка при выполнении SSH команды: ${error.message}`,
+        `Error executing SSH command: ${error.message}`,
         this,
       );
-      throw new Error(`SSH команда завершилась с ошибкой: ${error.message}`);
+      throw new Error(`SSH command failed with error: ${error.message}`);
     }
   }
 }
