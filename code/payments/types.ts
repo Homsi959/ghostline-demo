@@ -5,7 +5,7 @@ export interface PaymentRoboPayload {
   /** Payment amount, e.g., 199.00 */
   amount: number;
 
-  /** Payment purpose, e.g., "GhostlineVPN subscription for 1 month" */
+  /** Payment purpose, e.g., "servicevpnVPN subscription for 1 month" */
   description: string;
 
   /** User UUID */

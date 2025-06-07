@@ -1,18 +1,18 @@
 {
   "version": "1.0.0",
-  "description": "Backend for GhostlineVPN — secure and scalable VPN control panel built with NestJS.",
-  "author": "homsi ghostlinevpn@proton.me",
+  "description": "Backend for servicevpnVPN — secure and scalable VPN control panel built with NestJS.",
+  "author": "homsi servicevpnvpn@proton.me",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Homsi959/Ghostline.git"
+    "url": "https://github.com/Homsi959/servicevpn.git"
   },
   "bugs": {
-    "url": "https://github.com/Homsi959/Ghostline/issues"
+    "url": "https://github.com/Homsi959/servicevpn/issues"
   },
-  "homepage": "https://github.com/Homsi959/Ghostline",
+  "homepage": "https://github.com/Homsi959/servicevpn",
   "scripts": {
-    "start:dev": "doppler run --project ghostline --config dev_personal -- nest start --watch",
+    "start:dev": "doppler run --project servicevpn --config dev_personal -- nest start --watch",
     "build": "nest build"
   },
   "dependencies": {

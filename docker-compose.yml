@@ -1,7 +1,7 @@
 services:
-  ghostline_app:
+  servicevpn_app:
     build: .
-    container_name: ghostline-app
+    container_name: servicevpn-app
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -12,8 +12,8 @@ services:
       - ../infra/xray/logs:/usr/local/etc/xray/logs
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - ghostline_net
+      - servicevpn_net
 
 networks:
-  ghostline_net:
+  servicevpn_net:
     external: true
