@@ -2,8 +2,8 @@ import { Global, Module } from '@nestjs/common';
 import { CONFIG_PROVIDERS } from './config.providers';
 
 /**
- * Глобальный модуль, читающий конфигурацию
- * приложения из KV-хранилища consul
+ * Global module that reads the application's configuration
+ * from the KV storage in Consul.
  */
 @Global()
 @Module({

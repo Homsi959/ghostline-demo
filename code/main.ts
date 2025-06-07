@@ -3,19 +3,19 @@ import { AppModule } from './app/app.module';
 import { WinstonService } from './logger/winston.service';
 
 /**
- * Запускает приложение NestJS.
+ * Launches the NestJS application.
  *
- * Создает приложение с `AppModule`, настраивает логгер `WinstonService` и
- * запускает сервер на порту 4000 или указанном в `process.env.PORT`.
+ * Creates an application with `AppModule`, configures the `WinstonService` logger, and
+ * starts the server on port 4000 or the one specified in `process.env.PORT`.
  *
  * @async
  * @function bootstrap
- * @returns {Promise<void>} Обещание при успешном запуске сервера.
+ * @returns {Promise<void>} Promise upon successful server startup.
  *
  * @example
  * bootstrap();
  *
- * @throws {Error} Если сервер не удалось запустить.
+ * @throws {Error} If the server fails to start.
  */
 async function bootstrap(): Promise<void> {
   const nest = await NestFactory.create(AppModule, {
@@ -25,13 +25,13 @@ async function bootstrap(): Promise<void> {
   nest.useLogger(nest.get(WinstonService));
   const PORT = Number(process.env.PORT) || 4000;
   console.log(
-    `\x1b[36m\x1b[1m🚀🚀🚀 Сервер запущен на http://localhost:${PORT} 🚀🚀🚀\x1b[0m`,
+    `\x1b[36m\x1b[1m🚀🚀🚀 Server started at http://localhost:${PORT} 🚀🚀🚀\x1b[0m`,
   );
 
   await nest.listen(PORT);
 }
 
 bootstrap().catch((err: Error) => {
-  console.error('Не удалось запустить сервер', err.message);
+  console.error('Failed to start the server', err.message);
   console.error(err.stack);
 });

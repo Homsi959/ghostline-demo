@@ -2,8 +2,8 @@ import { Global, Module } from '@nestjs/common';
 import { WinstonService } from './winston.service';
 
 /**
- * Глобальный модуль, читающий конфигурацию
- * приложения из ENV файлов
+ * Global module that reads the application's configuration
+ * from ENV files.
  */
 @Global()
 @Module({

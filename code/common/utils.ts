@@ -4,13 +4,13 @@ import { InlineKeyboardButton, InlineKeyboardMarkup } from 'telegraf/types';
 import { BuildInlineKeyboardOptions } from './types';
 
 /**
- * Создаёт Telegram клавиатуру из массива кнопок с заданным количеством колонок.
- * Подставляет переменные из payload в шаблоны кнопок.
+ * Creates a Telegram keyboard from an array of buttons with a specified number of columns.
+ * Substitutes variables from the payload into button templates.
  *
- * @param arr - Массив кнопок.
- * @param columns - Количество колонок (по умолчанию 1).
- * @param payload - Данные для подстановки в шаблоны кнопок.
- * @returns - Telegram клавиатура.
+ * @param arr - Array of buttons.
+ * @param columns - Number of columns (default is 1).
+ * @param payload - Data for substitution into button templates.
+ * @returns - Telegram keyboard.
  */
 export function buildInlineKeyboard({
   arr,
@@ -43,7 +43,7 @@ export function buildInlineKeyboard({
     }
 
     if (!replacedButton.url && !replacedButton.action) {
-      console.warn(`❌ Кнопка без действия: ${JSON.stringify(item)}`);
+      console.warn(`❌ Button without action: ${JSON.stringify(item)}`);
       return acc;
     }
 
@@ -62,15 +62,15 @@ export function buildInlineKeyboard({
 }
 
 /**
- * Добавляет кнопку "Назад" в клавиатуру.
+ * Adds a "Go Back" button to the keyboard.
  *
- * @param keyboard - Существующая Telegram клавиатура (опционально).
- * @returns - Новая клавиатура с добавленной кнопкой "Назад".
+ * @param keyboard - Existing Telegram keyboard (optional).
+ * @returns - New keyboard with the "Go Back" button added.
  */
 export function addGoBackButton(
   keyboard?: Markup.Markup<InlineKeyboardMarkup>,
 ) {
-  // Если клавиатуры нет, создаем пустую
+  // If the keyboard does not exist, create an empty one
   const keyboardArray = keyboard?.reply_markup.inline_keyboard || [];
 
   keyboardArray.push([
@@ -81,10 +81,10 @@ export function addGoBackButton(
 }
 
 /**
- * Возвращает название класса или переданную строку как контекст для логов.
+ * Returns the class name or the provided string as the context for logs.
  *
- * @param classInstanceOrString - экземпляр класса или строка контекста.
- * @returns название класса или переданную строку.
+ * @param classInstanceOrString - Class instance or context string.
+ * @returns Class name or the provided string.
  */
 export function buildContext(
   classInstanceOrString?: object | string,
@@ -97,23 +97,23 @@ export function buildContext(
 }
 
 /**
- * Форматирует уровень логирования для выравнивания и удаления цветовых escape-последовательностей.
+ * Formats the logging level for alignment and removes color escape sequences.
  *
- * @param level - Уровень логирования (например, "info", "warn", "error").
- * @returns Отформатированный уровень логирования в квадратных скобках, дополненный пробелами до 9 символов.
+ * @param level - Logging level (e.g., "info", "warn", "error").
+ * @returns Formatted logging level in square brackets, padded to 9 characters.
  */
 export function levelFormatted(level: string): string {
-  const normalizedLevel = level.replace(/\u001b\[.*?m/g, '').toUpperCase(); // удаление escape-последовательностей
+  const normalizedLevel = level.replace(/\u001b\[.*?m/g, '').toUpperCase(); // remove escape sequences
   const formatedLevel = `[${normalizedLevel}]`;
   return formatedLevel.padEnd(9);
 }
 
 /**
- * Преобразует вложенный объект в плоский объект с ключами через точку.
+ * Converts a nested object into a flat object with dot-separated keys.
  *
- * @param obj - Вложенный объект.
- * @param result - Внутренний параметр для накопления результата.
- * @returns Плоский объект с путями в виде ключей.
+ * @param obj - Nested object.
+ * @param result - Internal parameter for accumulating the result.
+ * @returns Flat object with paths as keys.
  */
 export function flattenObject(
   obj: Record<string, any>,

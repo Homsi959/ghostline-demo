@@ -8,10 +8,10 @@ import { PaymentsModule } from 'code/payments/payments.module';
 import { SubscriptionModule } from 'code/subscription/subscription.module';
 
 /**
- * Модуль для работы с Telegram-ботом.
+ * Module for working with the Telegram bot.
  *
- * @remarks Этот модуль инкапсулирует всю логику, связанную с обработкой запросов от пользователей через Telegram-бота.
- * Он включает контроллер и сервис для работы с запросами и взаимодействия с Telegram API.
+ * @remarks This module encapsulates all logic related to processing user requests via the Telegram bot.
+ * It includes a controller and services for handling requests and interacting with the Telegram API.
  */
 @Module({
   imports: [

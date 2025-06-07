@@ -32,7 +32,7 @@ export class SshService implements OnModuleInit {
     this.host = host;
     this.username = username;
     this.logger.log(
-      `SSH-сервис инициализирован: ${this.username}@${this.host}`,
+      `SSH service initialized: ${this.username}@${this.host}`,
       this,
     );
   }

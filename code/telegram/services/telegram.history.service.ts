@@ -2,16 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { Context, TelegramSession } from '../common/telegram.types';
 
 /**
- * Сервис для управления историей посещенных страниц в течение сессии пользователя.
+ * Service for managing the history of visited pages during a user's session.
  */
 @Injectable()
 export class TelegramHistoryService {
   /**
-   * Сохраняет текущую страницу в историю сессии пользователя,
-   * если она не совпадает с последней посещенной страницей.
+   * Saves the current page to the user's session history
+   * if it does not match the last visited page.
    *
-   * @param history - Массив с историей посещенных страниц.
-   * @param page - Текущая страница, которая будет сохранена в истории.
+   * @param history - Array containing the history of visited pages.
+   * @param page - Current page to be saved in the history.
    */
   savePageHistory(history: TelegramSession['pageHistory'], page: string) {
     const prevPage = history[history.length - 1];
@@ -22,11 +22,11 @@ export class TelegramHistoryService {
   }
 
   /**
-   * Извлекает предыдущую страницу из истории страниц в сессии.
+   * Retrieves the previous page from the session's page history.
    *
-   * @param {Context} context - Контекст, содержащий сессию с историей страниц.
-   * @returns {string | null} - URL или идентификатор предыдущей страницы,
-   * или null, если предыдущей страницы нет.
+   * @param {Context} context - Context containing the session with page history.
+   * @returns {string | null} - URL or identifier of the previous page,
+   * or null if there is no previous page.
    */
   getPreviousPage(context: Context): string | null {
     const history = context?.session.pageHistory;

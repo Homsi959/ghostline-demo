@@ -6,8 +6,8 @@ import { AppConfig } from 'code/config/types';
 import { CONFIG_PROVIDER_TOKEN } from 'code/common/constants';
 
 /**
- * Сервис для работы с логированием с использованием библиотеки winston.
- * Обрабатывает различные уровни логирования и выводит сообщения в консоль.
+ * Service for working with logging using the winston library.
+ * Handles various logging levels and outputs messages to the console.
  */
 @Injectable()
 export class WinstonService implements LoggerService {

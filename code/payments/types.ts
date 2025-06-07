@@ -1,48 +1,45 @@
 /**
- * Данные для создания ссылки на оплату Robokassa.
+ * Data for creating a payment link for Robokassa.
  */
 export interface PaymentRoboPayload {
-  /** Сумма платежа, например: 199.00 */
+  /** Payment amount, e.g., 199.00 */
   amount: number;
 
-  /** Назначение платежа, например: "Подписка GhostlineVPN на 1 месяц" */
+  /** Payment purpose, e.g., "GhostlineVPN subscription for 1 month" */
   description: string;
 
-  /** uuid пользователя */
+  /** User UUID */
   userId: string;
 }
 
 /**
- * Данные одного товара для формирования чека Robokassa.
+ * Data for a single item to generate a Robokassa receipt.
  */
 export interface ReceiptRoboItem {
-  /** Название товара или услуги */
+  /** Name of the product or service */
   name: string;
 
-  /** Сумма за товар или услугу */
+  /** Amount for the product or service */
   sum: string;
 }
 
 /**
- * Параметры для формирования подписи SignatureValue.
- */
-/**
- * Параметры для формирования подписи SignatureValue.
+ * Parameters for generating the SignatureValue.
  */
 export interface SignaturePayload {
-  /** Идентификатор магазина в Robokassa (используется для подписи при отправке ссылки) */
+  /** Merchant identifier in Robokassa (used for signing when sending the link) */
   merchantLogin?: string;
 
-  /** Сумма платежа в формате 0.00 */
+  /** Payment amount in the format 0.00 */
   outSum: string;
 
-  /** Уникальный номер счёта (обычно совпадает с transaction_id / InvId) */
+  /** Unique invoice number (usually matches transaction_id / InvId) */
   invId: string;
 
-  /** Строка с фискальным чеком (если используется фискализация) */
+  /** String with the fiscal receipt (if fiscalization is used) */
   receipt?: string;
 
-  /** Пароль для подписи (Пароль #1 или #2 из настроек Robokassa) */
+  /** Password for signing (Password #1 or #2 from Robokassa settings) */
   password: string;
 }
 

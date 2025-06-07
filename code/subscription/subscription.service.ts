@@ -20,19 +20,19 @@ export class SubscriptionService implements OnModuleInit {
   ) {}
 
   /**
-   * Выполняет однократную проверку при старте приложения
+   * Performs a one-time check at application startup.
    */
   async onModuleInit() {
     await this.checkAndDeactivateExpired();
   }
 
   /**
-   * Создаёт подписку в базе данных с учётом московского времени.
+   * Creates a subscription in the database using Moscow time.
    *
-   * @param userId ID пользователя
-   * @param plan План подписки (платный или любой)
-   * @returns ID созданной подписки
-   * @throws Если расчёт даты или создание не удалось
+   * @param userId User ID
+   * @param plan Subscription plan (paid or any)
+   * @returns ID of the created subscription
+   * @throws If date calculation or creation fails
    */
   async create({
     userId,
@@ -46,7 +46,7 @@ export class SubscriptionService implements OnModuleInit {
 
     if (!end) {
       throw new Error(
-        `Не удалось рассчитать дату окончания подписки для плана "${plan}"`,
+        `Failed to calculate the subscription end date for plan "${plan}"`,
       );
     }
 
@@ -65,7 +65,7 @@ export class SubscriptionService implements OnModuleInit {
   }
 
   /**
-   * Вычисляет дату окончания подписки в зависимости от типа плана.
+   * Calculates the subscription end date based on the plan type.
    */
   private calculateEndDate(
     startDate: DateTime,
@@ -79,13 +79,13 @@ export class SubscriptionService implements OnModuleInit {
       case SubscriptionPlan.SIX_MONTHS:
         return startDate.plus({ months: 6 });
       default:
-        this.logger.error(`Неизвестный тип подписки: ${String(plan)}`);
+        this.logger.error(`Unknown subscription type: ${String(plan)}`);
         return null;
     }
   }
 
   /**
-   * Проверяет подписки каждую минуту и деактивирует истёкшие.
+   * Checks subscriptions every minute and deactivates expired ones.
    */
   @Cron('*/1 * * * *')
   private async checkAndDeactivateExpired() {
@@ -106,7 +106,7 @@ export class SubscriptionService implements OnModuleInit {
           await this.vpnAccountsDao.toggleVpnAccountBlock(userId, true);
 
           this.logger.warn(
-            `Подписка пользователя ${userId} деактивирована: срок действия истёк (${endDateUtc.toISO()})`,
+            `User ${userId}'s subscription deactivated: expired (${endDateUtc.toISO()})`,
             this,
           );
         } catch (error: unknown) {
@@ -114,7 +114,7 @@ export class SubscriptionService implements OnModuleInit {
             error instanceof Error ? error.message : 'Unknown error';
 
           this.logger.error(
-            `Ошибка при деактивации подписки userId=${userId}: ${errorMessage}`,
+            `Error deactivating subscription userId=${userId}: ${errorMessage}`,
             this,
           );
         }

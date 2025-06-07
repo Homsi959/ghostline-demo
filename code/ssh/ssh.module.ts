@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { SshService } from './ssh.service';
 
 /**
- * Модуль нужен только для работы и тестирования с Xray
- * который поднят на VPS TimeWeb (является Dev контуром)
+ * This module is only needed for working with and testing Xray,
+ * which is deployed on VPS TimeWeb (serves as the Dev environment).
  */
 @Module({
   providers: [SshService],

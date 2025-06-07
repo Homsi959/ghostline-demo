@@ -2,7 +2,7 @@ import { CONFIG_PROVIDER_TOKEN } from 'code/common/constants';
 import { AppConfig } from './types';
 
 /**
- * Провайдер конфигурации для .env значений
+ * Configuration provider for .env values
  */
 export const CONFIG_PROVIDERS = [
   {

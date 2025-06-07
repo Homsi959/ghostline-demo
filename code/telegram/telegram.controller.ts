@@ -11,9 +11,9 @@ import { Context } from './common/telegram.types';
 import { PaidSubscriptionPlan } from 'code/database/common/enums';
 
 /**
- * Контроллер для обработки событий в Telegram-боте.
+ * Controller for handling events in the Telegram bot.
  *
- * @remarks Обрабатывает стартап бота, рендеринг страниц и действие "Назад".
+ * @remarks Handles bot startup, page rendering, and the "Back" action.
  */
 @Update()
 export class TelegramBotController {
@@ -23,9 +23,9 @@ export class TelegramBotController {
   ) {}
 
   /**
-   * Метод, вызываемый при старте бота.
-   * Отправляет приветственное сообщение и отображает главное меню.
-   * @param context - Контекст Telegraf
+   * Method called when the bot starts.
+   * Sends a welcome message and displays the main menu.
+   * @param context - Telegraf context
    */
   @Start()
   async start(context: Context): Promise<void> {
@@ -33,11 +33,11 @@ export class TelegramBotController {
   }
 
   /**
-   * Слушает callback запросы на названия с приставкой в конце - Page
+   * Listens for callback requests with names ending in -Page.
    *
-   * @param context - Объект контекста, содержащий данные callback-запроса.
-   * @remarks - Если callback-запрос или его данные отсутствуют, записывается ошибка в лог и функция завершается.
-   * @throws - Выбрасывает ошибку, если метод telegramService.renderPage завершится неудачно.
+   * @param context - Context object containing callback request data.
+   * @remarks - Logs an error and exits if the callback request or its data is missing.
+   * @throws - Throws an error if the telegramService.renderPage method fails.
    */
   @Action(/^.*Page$/g)
   async renderPage(context: Context): Promise<void> {
@@ -47,10 +47,10 @@ export class TelegramBotController {
   }
 
   /**
-   * Обработчик действия "Назад".
-   * Проверяет наличие данных в callbackQuery и вызывает метод для отображения предыдущей страницы.
+   * Handler for the "Back" action.
+   * Checks for data in callbackQuery and calls the method to display the previous page.
    *
-   * @param context - Контекст, содержащий callbackQuery.
+   * @param context - Context containing callbackQuery.
    */
   @Action(ACTIONS_KEYS.GO_BACK)
   async goBack(context: Context) {
@@ -58,9 +58,9 @@ export class TelegramBotController {
   }
 
   /**
-   * Обрабатывает покупку подписки из Telegram-кнопок.
+   * Handles subscription purchases from Telegram buttons.
    *
-   * @param context - Контекст Telegram.
+   * @param context - Telegram context.
    */
   @Action(PURCHASE_ACTIONS)
   async handlePurchase(context: Context) {
@@ -80,6 +80,11 @@ export class TelegramBotController {
     });
   }
 
+  /**
+   * Activates trial access for the user.
+   *
+   * @param context - Telegram context.
+   */
   @Action(ACTIONS_KEYS.ACTIVATE_TRIAL)
   async getTrial(context: Context) {
     const { id: telegramId } = context.callbackQuery.from;
@@ -90,6 +95,11 @@ export class TelegramBotController {
     });
   }
 
+  /**
+   * Checks payment status.
+   *
+   * @param context - Telegram context.
+   */
   @Action(ACTIONS_KEYS.CHECK_PAYMENT)
   async checkPayment(context: Context) {
     await this.telegramService.handlePaymentCheck(context);

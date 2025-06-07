@@ -1,34 +1,34 @@
 /**
- * Токен для доступа к API Telegram
+ * Token for accessing the Telegram API
  */
 export const TELEGRAM_TOKEN = 'TELEGRAM_TOKEN';
 
 /**
- * Ключ для доступа к уровню логирования
+ * Key for accessing the logging level
  */
 export const LOG_LEVEL_KEY = 'LOG_LEVEL_KEY';
 
 /**
- * Токен сервиса БД
+ * Token for the database service
  */
 export const DATABASE_TOKEN = 'PG_CONNECTION';
 
 /**
- * Режим боя
+ * Production mode
  */
 export const PRODUCTION = 'production';
 
 /**
- * Режим разработки
+ * Development mode
  */
 export const DEVELOPMENT = 'development';
 
 /**
- * Режим разработки локально
+ * Local development mode
  */
 export const DEVELOPMENT_LOCAL = 'development_local';
 
 /**
- * Токен сервиса конфигурации
+ * Token for the configuration service
  */
 export const CONFIG_PROVIDER_TOKEN = 'CONFIG_PROVIDER_TOKEN';

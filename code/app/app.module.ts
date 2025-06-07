@@ -15,15 +15,15 @@ import { ConfigModule } from 'code/config/config.module';
 import { AppConfig } from 'code/config/types';
 
 /**
- * Основной модуль приложения.
+ * Main application module.
  *
- * Включает в себя все необходимые модули, такие как:
- * - DatabaseModule: Для работы с базой данных.
- * - WinstonModule: Для логирования с использованием Winston.
- * - TelegramModule: Для работы с Telegram-ботом.
- * - ConfigModule: Для работы с конфигурационными переменными.
- * - TelegrafModule: Для работы с Telegram API с использованием Telegraf.
- * - HttpModule: Для работы с Axios.
+ * Includes all necessary modules, such as:
+ * - DatabaseModule: For working with the database.
+ * - WinstonModule: For logging using Winston.
+ * - TelegramModule: For working with the Telegram bot.
+ * - ConfigModule: For working with configuration variables.
+ * - TelegrafModule: For working with the Telegram API using Telegraf.
+ * - HttpModule: For working with Axios.
  *
  * @module AppModule
  */
@@ -37,7 +37,7 @@ import { AppConfig } from 'code/config/types';
     ScheduleModule.forRoot(),
     SubscriptionModule,
     PaymentsModule,
-    // Загрузка конфигурации из переменных окружения
+    // Load configuration from environment variables
     NestConfigModule.forRoot({
       envFilePath: `settings/envs/.env.${process.env.NODE_ENV}`,
     }),
